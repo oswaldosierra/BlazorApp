@@ -3,7 +3,7 @@
 
 <PageTitle>Counter</PageTitle>
 
-<ModuleTitle Title="HolaQueTal" />
+<ModuleTitle Title="Contador" />
 
 <p role="status">Current count: @currentCount</p>
 
@@ -25,6 +25,7 @@
         {
             if (value is not null) currentCountParameter = value;
         }
+        logger.LogInformation("El contador es: {currentCountParameter}", currentCountParameter);
         await base.SetParametersAsync(parameters);
     }
 

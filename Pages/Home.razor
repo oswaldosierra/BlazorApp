@@ -1,7 +1,20 @@
 ﻿@page "/"
 
+@inject IConfiguration Configuration;
+
 <PageTitle>Home</PageTitle>
 
-<h1>Hola, mundo!</h1>
+<h1>@HelloMessage</h1>
 
 Welcome to your new app.
+
+
+@code {
+  public string? HelloMessage = "";
+
+  protected override void OnInitialized()
+  {
+    HelloMessage = Configuration["helloMessage"];
+  }
+
+}
