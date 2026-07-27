@@ -1,0 +1,38 @@
+@page "/products"
+@inject ILogger<Counter> logger;
+
+@inject IProductService productService;
+
+<PageTitle>Products</PageTitle>
+
+<ModuleTitle Title="Products" />
+
+@if (products.Count == 0)
+{
+  <p role="status">No productos disponibles.</p>
+}
+else
+{
+  <div class="row flex justify-content-center">
+    @foreach (var product in products)
+    {
+      <div class="card col-3 mb-3">
+        @* <li>@product.Title - @product.Price</li> *@
+        <img src="@product.Images[0]" class="img-fluid rounded-start" alt="@product.Title" />
+        <h1>@product.Title</h1>
+        <p>@product.Description</p>
+        <p>$@product.Price</p>
+      </div>
+    }
+  </div>
+}
+
+@code {
+  private List<Product> products = new List<Product>();
+
+  protected override async Task OnInitializedAsync()
+  {
+    products = await productService.Get();
+    logger.LogInformation("Se inicia el componente Products");
+  }
+}

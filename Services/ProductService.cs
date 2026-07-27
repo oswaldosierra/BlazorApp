@@ -14,7 +14,7 @@ public class ProductService : IProductService
 
     public async Task<List<Product>> Get()
     {
-        var response = await _httpClient.GetAsync("/v1/products");
+        var response = await _httpClient.GetAsync("api/v1/products");
         response.EnsureSuccessStatusCode();
         var products = await response.Content.ReadFromJsonAsync<List<Product>>();
         return products ?? new List<Product>();

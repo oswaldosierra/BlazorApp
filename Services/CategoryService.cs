@@ -14,7 +14,7 @@ public class CategoryService : ICategoryService
 
     public async Task<List<Category>> Get()
     {
-        var response = await _httpClient.GetAsync("v1/categories");
+        var response = await _httpClient.GetAsync("api/v1/categories");
         response.EnsureSuccessStatusCode();
         var categories = await response.Content.ReadFromJsonAsync<List<Category>>();
         return categories ?? new List<Category>();
