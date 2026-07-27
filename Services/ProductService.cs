@@ -1,9 +1,9 @@
 using System.Net.Http.Json;
 
-namespace blazorapp;
+namespace BlazorApp;
 
 
-public class ProductService
+public class ProductService : IProductService
 {
     private readonly HttpClient _httpClient;
 
@@ -31,4 +31,11 @@ public class ProductService
         var response = await _httpClient.DeleteAsync($"/v1/products/{id}");
         response.EnsureSuccessStatusCode();
     }
+}
+
+public interface IProductService
+{
+    Task<List<Product>> Get();
+    Task Add(Product product);
+    Task Delete(int id);
 }

@@ -1,9 +1,9 @@
 using System.Net.Http.Json;
 
-namespace blazorapp;
+namespace BlazorApp;
 
 
-public class CategoryService
+public class CategoryService : ICategoryService
 {
     private readonly HttpClient _httpClient;
 
@@ -19,4 +19,9 @@ public class CategoryService
         var categories = await response.Content.ReadFromJsonAsync<List<Category>>();
         return categories ?? new List<Category>();
     }
+}
+
+public interface ICategoryService
+{
+    Task<List<Category>> Get();
 }

@@ -9,5 +9,7 @@ builder.RootComponents.Add<HeadOutlet>("head::after");
 var apiUrl = builder.Configuration.GetValue<string>("apiUrl");
 
 builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(apiUrl) });
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+builder.Services.AddScoped<IProductService, ProductService>();
 
 await builder.Build().RunAsync();

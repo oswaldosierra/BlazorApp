@@ -1,4 +1,4 @@
-namespace blazorapp;
+namespace BlazorApp;
 
 public class Product
 {
