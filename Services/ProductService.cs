@@ -22,13 +22,13 @@ public class ProductService : IProductService
 
     public async Task Add(Product product)
     {
-        var response = await _httpClient.PostAsJsonAsync("/v1/products", product);
+        var response = await _httpClient.PostAsJsonAsync("/api/v1/products", product);
         response.EnsureSuccessStatusCode();
     }
 
     public async Task Delete(int id)
     {
-        var response = await _httpClient.DeleteAsync($"/v1/products/{id}");
+        var response = await _httpClient.DeleteAsync($"/api/v1/products/{id}");
         response.EnsureSuccessStatusCode();
     }
 }
